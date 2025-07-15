@@ -1,5 +1,5 @@
-let canvas = document.getElementById("MyCanvas");
-let ctx = canvas.getConext("2d");
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
 
 
 
@@ -13,7 +13,17 @@ let cBoard = [];
     cBoard[6] = ["","grey","","grey","","grey","","grey"];
     cBoard[7] = ["grey","","grey","","grey","","grey",""];
 
-
+drawBoard();
 function drawBoard(){
+    for(let i = 0; i < cBoard.length; i++){
+        if(i % 2 == 0){
+            ctx.fillStyle = "white";
+            ctx.fillRect((i*100),0,100,100);
 
+        }else{
+            ctx.fillStyle = "black";
+            ctx.fillRect((i*100),0,100,100);
+        }
+        
+    }
 }
