@@ -1,9 +1,9 @@
 let cBoard = [];
-    cBoard[0] = new Array(8);
-    cBoard[1] = new Array(8);
-    cBoard[2] = new Array(8);
-    cBoard[3] = new Array(8);
-    cBoard[4] = new Array(8);
-    cBoard[5] = new Array(8);
-    cBoard[6] = new Array(8);
-    cBoard[7] = new Array(8);
+    cBoard[0] = ["","","","","","","",""];
+    cBoard[1] = ["","","","","","","",""];
+    cBoard[2] = ["","","","","","","",""];
+    cBoard[3] = ["","","","","","","",""];
+    cBoard[4] = ["","","","","","","",""];
+    cBoard[5] = ["","","","","","","",""];
+    cBoard[6] = ["","","","","","","",""];
+    cBoard[7] = ["","","","","","","",""];
