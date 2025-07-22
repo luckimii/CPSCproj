@@ -43,7 +43,18 @@ canvas.onclick = (event) => {
   let clickX = Math.floor(event.offsetX / 100);
   let clickY = Math.floor(event.offsetY / 100);
   console.log("X: " + clickX + " Y: " + clickY);
-  console.log(cBoard[clickX][clickY]);
+  console.log(cBoard[clickY][clickX]);
+  if (cBoard[clickY][clickX] != "") {
+    let selectedPiece = getSelectedPiece();
+    if (selectedPiece != null) {
+      selectedPiece.isClicked = !selectedPiece.isClicked;
+    } else if (selectedPiece == null) {
+      cBoard[clickY][clickX].isClicked = !cBoard[clickY][clickX].isClicked;
+    }
+  } else if (cBoard[clickY][clickX] == "") {
+  }
+  drawBoard();
+  drawPieces();
 };
 
 function Piece(row, col, color) {
@@ -54,6 +65,12 @@ function Piece(row, col, color) {
   this.isKing = false;
 
   this.draw = function () {
+    if (this.isClicked) {
+      ctx.fillStyle = "yellow";
+      ctx.beginPath();
+      ctx.arc(this.col * 100 + 50, this.row * 100 + 50, 40, 0, Math.PI * 2);
+      ctx.fill();
+    }
     ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.arc(this.col * 100 + 50, this.row * 100 + 50, 35, 0, Math.PI * 2);
@@ -62,25 +79,42 @@ function Piece(row, col, color) {
 }
 
 //for testing
-for (let i = 0; i < cBoard.length; i++) {
-  for (let j = 0; j < cBoard[i].length; j++) {
-    if (cBoard[i][j] == "red") {
-      cBoard[i][j] = new Piece(i, j, "red");
-    }
-    if (cBoard[i][j] == "grey") {
-      cBoard[i][j] = new Piece(i, j, "grey");
-    }
-    if (cBoard[i][j] != "") {
-      cBoard[i][j].draw();
-    }
-  }
-}
-
-function getSelectedPiece() {
-  for (let i = 0; i < cBoard.length; i++) {
-    for (let j = 0; j < cBoard[i].length; j++) {
-      if (cBoard[i][j].isClicked) {
+function instantiatePieces() {
+  for (let y = 0; y < cBoard.length; y++) {
+    for (let x = 0; x < cBoard[y].length; x++) {
+      if (cBoard[y][x] == "red") {
+        cBoard[y][x] = new Piece(y, x, "red");
+      }
+      if (cBoard[y][x] == "grey") {
+        cBoard[y][x] = new Piece(y, x, "grey");
+      }
+      if (cBoard[y][x] != "") {
+        cBoard[y][x].draw();
       }
     }
   }
 }
+
+function drawPieces() {
+  for (let y = 0; y < cBoard.length; y++) {
+    for (let x = 0; x < cBoard[y].length; x++) {
+      if (cBoard[y][x] != "") {
+        cBoard[y][x].draw();
+      }
+    }
+  }
+}
+function getSelectedPiece() {
+  let selectedPiece = null;
+  for (let y = 0; y < cBoard.length; y++) {
+    for (let x = 0; x < cBoard[y].length; x++) {
+      if (cBoard[y][x].isClicked) {
+        selectedPiece = cBoard[y][x];
+      }
+    }
+  }
+  return selectedPiece;
+}
+
+instantiatePieces();
+drawPieces();
