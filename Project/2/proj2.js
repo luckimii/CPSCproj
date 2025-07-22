@@ -39,6 +39,13 @@ function drawBoard() {
 
 drawBoard();
 
+canvas.onclick = (event) => {
+  let clickX = Math.floor(event.offsetX / 100);
+  let clickY = Math.floor(event.offsetY / 100);
+  console.log("X: " + clickX + " Y: " + clickY);
+  console.log(cBoard[clickX][clickY]);
+};
+
 function Piece(row, col, color) {
   this.row = row;
   this.col = col;
@@ -65,6 +72,15 @@ for (let i = 0; i < cBoard.length; i++) {
     }
     if (cBoard[i][j] != "") {
       cBoard[i][j].draw();
+    }
+  }
+}
+
+function getSelectedPiece() {
+  for (let i = 0; i < cBoard.length; i++) {
+    for (let j = 0; j < cBoard[i].length; j++) {
+      if (cBoard[i][j].isClicked) {
+      }
     }
   }
 }
