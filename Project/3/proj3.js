@@ -76,9 +76,19 @@ function Piece(row, col, color) {
     ctx.arc(this.col * 100 + 50, this.row * 100 + 50, 35, 0, Math.PI * 2);
     ctx.fill();
   };
+
+  this.checkKing = function (){
+    if(this.color == "red" && this.row == 7){
+        this.isKing = true;
+    }
+    if(this.color == "grey" && this.row == 0){
+        this.isKing = true;
+    }
+
+  }
 }
 
-//for testing
+
 function instantiatePieces() {
   for (let y = 0; y < cBoard.length; y++) {
     for (let x = 0; x < cBoard[y].length; x++) {
