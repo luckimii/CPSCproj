@@ -78,7 +78,7 @@ function Piece(row, col, color) {
   };
 }
 
-//for testing
+
 function instantiatePieces() {
   for (let y = 0; y < cBoard.length; y++) {
     for (let x = 0; x < cBoard[y].length; x++) {
