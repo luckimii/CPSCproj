@@ -107,11 +107,11 @@ function Piece(row, col, color) {
         if (newRow == this.row + 2) {
             let middleRow = this.row + 1;
             let middleCol = (newCol > this.col) ? this.col + 1 : this.col - 1;
-            cBoard[middleRow][middleCol] = ""; // Remove jumped piece
+            cBoard[middleRow][middleCol] = ""; 
         } else if (newRow == this.row - 2) {
             let middleRow = this.row - 1;
             let middleCol = (newCol > this.col) ? this.col + 1 : this.col - 1;
-            cBoard[middleRow][middleCol] = ""; // Remove jumped piece
+            cBoard[middleRow][middleCol] = ""; 
         }
 
         this.row = newRow;
