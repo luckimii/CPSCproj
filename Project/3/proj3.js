@@ -86,7 +86,29 @@ function Piece(row, col, color) {
     }
 
   }
+  this.move = function(newRow,newCol){
+    
+    if(this.isKing){
+        cBoard[this.row][this.col] = "";
+        this.row = newRow;
+        this.col = newCol;
+        cBoard[this.row][this.col] = this;
+    }else if(this.color == "red" && (newRow > this.row)){
+        cBoard[this.row][this.col] = "";
+        this.row = newRow;
+        this.col = newCol;
+        cBoard[this.row][this.col] = this;
+    }else if(this.color == "grey" && (newRow < this.row)){
+        cBoard[this.row][this.col] = "";
+        this.row = newRow;
+        this.col = newCol;
+        cBoard[this.row][this.col] = this;
+    }
+    this.checkKing();
+  }
 }
+
+
 
 
 function instantiatePieces() {
