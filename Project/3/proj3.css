@@ -1,0 +1,15 @@
+h1{
+    color: goldenrod;
+    font: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p{
+    color: goldenrod;
+}
+
+body{
+    background-image: url("parktable.png");
+    
+}
+
